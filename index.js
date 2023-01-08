@@ -1,7 +1,7 @@
 let playerScore = 0;
 let computerScore = 0;
 const buttons = document.querySelectorAll('input');
-//basic mechanic start
+
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         playRound(button.id, getComputerChoice()); 
@@ -11,8 +11,6 @@ function getComputerChoice() {
     let items = ["Rock", "Paper", "Scissors"];
     return items[Math.floor(Math.random() * items.length)];
 }
-//end
-
 function disableButtons() {
     buttons.forEach((button) => {
         button.disabled = true;
@@ -25,6 +23,7 @@ function playRound(playerSelection, computerSelection) {
     let wonGame = '';
     let result = document.getElementById('result');
     let string = '';
+    let reload = '';
     let player = playerSelection.toLowerCase();
     let computer = computerSelection.toLowerCase();
     console.log(`${player}, ${computer}`)
@@ -36,6 +35,7 @@ function playRound(playerSelection, computerSelection) {
         playerScore++;
         if (playerScore === 5) {
             wonGame = "My Congratulations, You won this game!!!";
+            reload = "Please reload this page to start new game";
             disableButtons();
         }
     }
@@ -44,8 +44,9 @@ function playRound(playerSelection, computerSelection) {
         computerScore++;
         if (computerScore === 5) {
             wonGame = "I'm sorry, but Computer won this game, I hope you have better luck in the next game";
+            reload = "Please reload this page to start new game";
             disableButtons();
         }
     }
-    return result.innerHTML = `<p class="round">${string}</p><p class="info">Player: ${playerScore} | Computer: ${computerScore}</p><p class="game">${wonGame}</p>`;
+    return result.innerHTML = `<p id="round">${string}</p><p id="info">Player: ${playerScore} | Computer: ${computerScore}</p><p id="game">${wonGame}</p><p id="reload">${reload}</p>`;
 }
