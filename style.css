@@ -22,6 +22,7 @@ body {
 
 header {
     margin-top: 16px;
+    text-align: center;
 }
 
 /* MAIN */
@@ -123,4 +124,43 @@ footer {
     justify-content: center;
     width: 100%;
     margin-bottom: 8px;
+}
+
+@media screen and (max-width: 767px) {
+    body {
+        width: 100%;
+    }
+    #choices {
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    #choices button {
+        height: 200px;
+    } 
+    button img {
+        height: 150px;
+    }
+    .players p {
+        font-size: 28px;
+    }
+    #round {
+        font-size: 20px;
+    }
+    #game {
+        font-size: 24px;
+    }
+    #choices, #result, #again, footer {
+        margin-top: 16px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    #choices {
+        box-sizing: border-box;
+        gap: 12px;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
 }
