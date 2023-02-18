@@ -1,21 +1,126 @@
-@import url('https://fonts.googleapis.com/css2?family=Rowdies&display=swap');
-/* @font-face {
-    font-family: 'Rowdies';
-    src: url('https://fonts.googleapis.com/css2?family=Rowdies&display=swap');
-} */
-
+/* BASIC */
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Rowdies', Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
 }
+
 body {
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(227,254,255);
+    background: linear-gradient(60deg, rgba(227,254,255,1) 0%, rgba(195,245,255,1) 100%);
+
+}
+
+header {
+    margin-top: 16px;
+}
+
+/* MAIN */
+#choices {
+    display: flex;
+    gap: 24px;
+    
+}
+#choices button {
+    height: 350px;
+    width: 350px;
+    display: flex;
     justify-content: center;
     align-items: center;
+    padding: 64px;
+    border-radius: 16px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    position: relative;
 }
+img {
+    height: 200px;
+    z-index: 2;
+}
+
+#choices button::before {
+    background: radial-gradient(
+        400px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(139, 220, 253, 0.9),
+        transparent 40% 
+    );
+    border-radius: inherit;
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+    transition: opacity 500ms;
+    z-index: 1;
+}
+#choices button:hover::before {
+    opacity: 1;
+}
+
 #result {
-    width: 50%;
+    width: 80%;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+#round {
+    font-size: 24px;
+}
+#game {
+    font-size: 32px;
+}
+.players {
+    display: flex;
+    justify-content: space-between;
+}
+.players p {
+    font-size: 32px;
+}
+.restart {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    border-radius: 16px;
+    font-size: 24px;
+    padding: 24px 48px;
+    transition: 500ms;
+}
+.restart:hover {
+    background-color: rgba(139, 220, 253, 0.9);
+}
+
+/* FOOTER */
+a {
+    text-decoration: none;
+    color: #202020;
+}
+a:hover {
+    color: #555;
+}
+a:active {
+    color: #7b7b7b;
+}
+
+footer {
+    font-size: 24px;
+    color: #202020;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 8px;
 }

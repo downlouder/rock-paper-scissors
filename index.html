@@ -8,12 +8,33 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="buttons">
-        <input id="Rock" type="button" value="Rock">
-        <input id="Paper" type="button" value="Paper">
-        <input id="Scissors" type="button" value="Scissors">
-    </div>
-    <div id="result"></div>
+        <header>
+            <h1>Rock Paper Scissors</h1>
+        </header>
+        <div id="choices">
+            <button id="Rock">
+                <img src="./images/rock.png" alt="Rock">
+            </button>
+            <button id="Paper">
+                <img src="./images/paper.png" alt="Paper">
+            </button>
+            <button id="Scissors">
+                <img src="./images/scissors.png" alt="">
+            </button>
+        </div>
+        <div id="result"></div>
+        <div id="again"></div>
+        <footer>
+            <p>
+                Copyright ©
+                <script>
+                  document.write(new Date().getFullYear())
+                </script>
+                <a href="https://github.com/downlouder" target="_blank">
+                    downlouder
+                </a>  
+            </p>
+        </footer>
     <script src="index.js"></script>
 </body>
 </html>

@@ -1,6 +1,9 @@
+const buttons = document.querySelectorAll('#choices button');
+const result = document.getElementById('result');
+const againBlock = document.getElementById('again');
+const againBtn = document.createElement('button');
 let playerScore = 0;
 let computerScore = 0;
-const buttons = document.querySelectorAll('input');
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -8,7 +11,7 @@ buttons.forEach((button) => {
     });
 });
 function getComputerChoice() {
-    let items = ["Rock", "Paper", "Scissors"];
+    const items = ["Rock", "Paper", "Scissors"];
     return items[Math.floor(Math.random() * items.length)];
 }
 function disableButtons() {
@@ -17,16 +20,31 @@ function disableButtons() {
     });
 }
 
+function showAgainBtn() {
+    againBtn.hidden = false
+    againBtn.className = 'restart';
+    againBtn.textContent = 'Play Again';
+    againBlock.append(againBtn);
+    againBtn.addEventListener('click', restartGame);
+}
+
+function restartGame() {
+    playerScore = 0;
+    computerScore = 0;
+    result.innerHTML = '';
+    buttons.forEach((button) => {
+        button.disabled = false;
+    })
+    againBtn.hidden = true;
+}
+
 function playRound(playerSelection, computerSelection) {
-    // let playerScore = 0;
-    // let computerScore = 0;
     let wonGame = '';
-    let result = document.getElementById('result');
     let string = '';
     let reload = '';
     let player = playerSelection.toLowerCase();
     let computer = computerSelection.toLowerCase();
-    console.log(`${player}, ${computer}`)
+    console.log(`${player}, ${computer}`);
     if (player === computer) {
         string = "Tie, nobody won or lost this round";
     }
@@ -37,6 +55,7 @@ function playRound(playerSelection, computerSelection) {
             wonGame = "My Congratulations, You won this game!!!";
             reload = "Please reload this page to start new game";
             disableButtons();
+            showAgainBtn();
         }
     }
     else if ((player === "paper" && computer === "scissors") || (player === "rock" && computer === "paper") || (player === "scissors" && computer === "rock")) {
@@ -46,7 +65,25 @@ function playRound(playerSelection, computerSelection) {
             wonGame = "I'm sorry, but Computer won this game, I hope you have better luck in the next game";
             reload = "Please reload this page to start new game";
             disableButtons();
+            showAgainBtn();
         }
     }
-    return result.innerHTML = `<p id="round">${string}</p><p id="info">Player: ${playerScore} | Computer: ${computerScore}</p><p id="game">${wonGame}</p><p id="reload">${reload}</p>`;
+    return result.innerHTML = `<div class="players"><p>Player: ${playerScore}</p><p>Computer: ${computerScore}</p></div><p id="round">${string}!</p><p id="game">${wonGame}</p>`;
+}
+
+
+// HOVER EFFECT
+const handleOnMouseMove = e => {
+    const { currentTarget: target } = e;
+
+    const rect = target.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    target.style.setProperty('--mouse-x', `${x}px`);
+    target.style.setProperty('--mouse-y', `${y}px`);
+}
+
+for (const button of document.querySelectorAll('button')) {
+    button.onmousemove = e => handleOnMouseMove(e);
 }
