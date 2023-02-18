@@ -44,7 +44,7 @@ function playRound(playerSelection, computerSelection) {
     let reload = '';
     let player = playerSelection.toLowerCase();
     let computer = computerSelection.toLowerCase();
-    console.log(`${player}, ${computer}`);
+
     if (player === computer) {
         string = "Tie, nobody won or lost this round";
     }
@@ -70,7 +70,6 @@ function playRound(playerSelection, computerSelection) {
     }
     return result.innerHTML = `<div class="players"><p>Player: ${playerScore}</p><p>Computer: ${computerScore}</p></div><p id="round">${string}!</p><p id="game">${wonGame}</p>`;
 }
-
 
 // HOVER EFFECT
 const handleOnMouseMove = e => {
